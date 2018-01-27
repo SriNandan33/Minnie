@@ -24,7 +24,7 @@ def listen():
     try:
         return recognizer.recognize_google(audio)
     except speech_recognition.UnknownValueError:
-        print("Could not understand audio")
+        print("Waiting for your command")
     except speech_recognition.RequestError as e:
         print("Recog Error; {0}".format(e))
 
@@ -32,13 +32,17 @@ def listen():
 
 if __name__ == '__main__':
     print('listening....')
-    user_input = listen()
-    json_response = get_json_response(user_input)
-    speech_response = (json_response['result']['fulfillment']['speech'])
-    voiceEngine.say(speech_response)
-    voiceEngine.runAndWait()
+    while True:
 
-    output_intent = (json_response['result']['metadata']['intentName'])
+        try:
+            user_input = listen()
+            json_response = get_json_response(user_input)
+            speech_response = (json_response['result']['fulfillment']['speech'])
+            voiceEngine.say(speech_response)
+            voiceEngine.runAndWait()
+            output_intent = (json_response['result']['metadata']['intentName'])
+            if output_intent:
+                getattr(TaskIdentifier, output_intent)(json_response)
 
-    if output_intent:
-        getattr(TaskIdentifier, output_intent)(json_response)
+        except:
+            pass
