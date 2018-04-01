@@ -1,5 +1,5 @@
 from modules import (
-    webOpener,
+    webopener,
     maps,
     newsReader,
     )
@@ -7,7 +7,7 @@ from modules import (
 
 class TaskIdentifier:
     def open_website(json_response):
-        webOpener.open_website(json_response)
+        webopener.open_website(json_response)
 
     def get_directions(json_response):
         maps.get_directions(json_response)

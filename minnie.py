@@ -35,7 +35,8 @@ if __name__ == '__main__':
     while True:
 
         try:
-            user_input = listen()
+            # user_input = listen()
+            user_input = input()
             json_response = get_json_response(user_input)
             speech_response = (json_response['result']['fulfillment']['speech'])
             voiceEngine.say(speech_response)
