@@ -2,6 +2,7 @@ from modules import (
     webopener,
     maps,
     newsReader,
+    system_apps,
     )
 
 
@@ -20,3 +21,7 @@ class TaskIdentifier:
 
     def read_news(json_response):
         newsReader.read_news()
+
+    def sys_apps(json_response):
+        system_apps.open_app(json_response)
+
