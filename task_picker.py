@@ -4,6 +4,7 @@ from modules import (
     newsReader,
     system_apps,
     quotation,
+    weather_today,
     )
 
 
@@ -28,4 +29,7 @@ class TaskIdentifier:
 
     def get_quote(json_response):
         quotation.quote_of_the_day()
+
+    def get_weather(json_response):
+        weather_today.get_weather(json_response)
 
