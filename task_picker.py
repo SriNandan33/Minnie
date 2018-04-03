@@ -3,6 +3,7 @@ from modules import (
     maps,
     newsReader,
     system_apps,
+    quotation,
     )
 
 
@@ -24,4 +25,7 @@ class TaskIdentifier:
 
     def sys_apps(json_response):
         system_apps.open_app(json_response)
+
+    def get_quote(json_response):
+        quotation.quote_of_the_day()
 
